@@ -30,8 +30,8 @@ const Gallery: React.FC = () => {
   };
 
   return (
-    <section id="gallery" className="section-padding bg-white">
-      <div className="container-custom">
+    <section id="gallery" className="py-16 sm:py-20 lg:py-24 xl:py-32 bg-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -41,13 +41,13 @@ const Gallery: React.FC = () => {
         >
           <motion.h2
             variants={itemVariants}
-            className="font-script text-5xl md:text-6xl text-gray-800 mb-4"
+            className="font-script text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-gray-800 mb-4 sm:mb-6 lg:mb-8"
           >
             Our Videos
           </motion.h2>
           <motion.p
             variants={itemVariants}
-            className="text-gray-600 text-lg max-w-2xl mx-auto"
+            className="text-gray-600 text-base sm:text-lg lg:text-xl max-w-3xl mx-auto leading-relaxed"
           >
             Momen-momen indah perjalanan cinta kami
           </motion.p>
@@ -58,20 +58,20 @@ const Gallery: React.FC = () => {
           whileInView="visible"
           viewport={{ once: true }}
           variants={containerVariants}
-          className="flex flex-col gap-16"
+          className="flex flex-col gap-12 sm:gap-16 lg:gap-20 xl:gap-24"
         >
           {videos.map((video) => (
             <motion.div
               key={video.id}
               variants={itemVariants}
               className={`flex flex-col md:flex-row items-center gap-8 ${
-                video.reverse ? 'md:flex-row-reverse' : ''
+                video.reverse ? 'lg:flex-row-reverse' : ''
               }`}
             >
               {/* Video */}
-              <div className="w-full md:w-1/2 aspect-video">
+              <div className="w-full lg:w-1/2 aspect-video">
                 <iframe
-                  className="w-full h-full rounded-2xl shadow-lg"
+                  className="w-full h-full rounded-2xl shadow-2xl"
                   src={video.url}
                   title={video.title}
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -80,11 +80,11 @@ const Gallery: React.FC = () => {
               </div>
 
               {/* Deskripsi */}
-              <div className="w-full md:w-1/2 text-gray-700">
-                <h3 className="font-script text-3xl text-gray-800 mb-4">
+              <div className="w-full lg:w-1/2 text-gray-700 px-4 sm:px-6 lg:px-8">
+                <h3 className="font-script text-2xl sm:text-3xl lg:text-4xl text-gray-800 mb-4 sm:mb-6">
                   {video.title}
                 </h3>
-                <p className="text-lg">{video.description}</p>
+                <p className="text-sm sm:text-base lg:text-lg leading-relaxed">{video.description}</p>
               </div>
             </motion.div>
           ))}

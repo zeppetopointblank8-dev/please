@@ -1,13 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Calendar, Mail } from 'lucide-react';
-import { Cinzel } from 'next/font/google';
-
-// Load Google Font Cinzel
-const cinzel = Cinzel({
-  subsets: ['latin'],
-  weight: ['400', '700'],
-});
 
 interface WelcomeScreenProps {
   onOpenInvitation: () => void;
@@ -27,15 +20,15 @@ const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ onOpenInvitation }) => {
       }}
     >
       {/* Falling Leaves Animation */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+      <div className="absolute inset-0 overflow-hidden pointer-events-none hidden md:block">
         {[...Array(10)].map((_, i) => (
           <motion.div
             key={i}
             className="absolute text-white/30 text-2xl"
-            initial={{ y: -50, x: Math.random() * window.innerWidth, rotate: 0 }}
+            initial={{ y: -50, x: Math.random() * 1200, rotate: 0 }}
             animate={{
               y: '110vh',
-              x: Math.random() * window.innerWidth,
+              x: Math.random() * 1200,
               rotate: 360,
             }}
             transition={{
@@ -51,34 +44,34 @@ const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ onOpenInvitation }) => {
       </div>
 
       {/* Content */}
-      <div className="text-center text-white z-10 max-w-2xl mx-auto px-6">
+      <div className="text-center text-white z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ y: 50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="mb-8"
+          className="mb-8 sm:mb-12"
         >
           <h1
-            className={`${cinzel.className} text-6xl md:text-8xl mb-4 drop-shadow-md`}
+            className="font-cinzel text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl mb-6 sm:mb-8 drop-shadow-md font-semibold tracking-wide"
           >
             Dimas & Amel
           </h1>
 
-          <div className="flex items-center justify-center gap-4 mb-6">
+          <div className="flex items-center justify-center gap-4 sm:gap-6 mb-6 sm:mb-8">
             <div className="h-px bg-white/40 flex-1"></div>
-            <div className="text-sm uppercase tracking-widest text-white/60">
+            <div className="text-xs sm:text-sm uppercase tracking-widest text-white/60 px-2">
               Wedding Invitation
             </div>
             <div className="h-px bg-white/40 flex-1"></div>
           </div>
 
-          <p className="text-xl md:text-2xl font-light text-white/80 mb-2">
+          <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-light text-white/90 mb-4 sm:mb-6 leading-relaxed">
             Mengundang Anda dalam Acara Pernikahan Kami
           </p>
 
-          <div className="flex items-center justify-center gap-2 text-lg text-white">
-            <Calendar size={20} />
-            <span>15 Februari 2025</span>
+          <div className="flex items-center justify-center gap-2 sm:gap-3 text-lg sm:text-xl md:text-2xl text-white/90">
+            <Calendar size={24} className="sm:w-6 sm:h-6" />
+            <span className="font-medium">07 September 2025</span>
           </div>
         </motion.div>
 
@@ -87,18 +80,21 @@ const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ onOpenInvitation }) => {
           initial={{ y: 50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.6 }}
+          className="mt-8 sm:mt-12"
         >
           <button
             onClick={onOpenInvitation}
-            className="relative overflow-hidden rounded-full shadow-lg border border-white/60
-                       px-12 py-4 text-lg text-white font-medium
+            className="relative overflow-hidden rounded-full shadow-2xl border-2 border-white/60
+                       px-8 sm:px-12 lg:px-16 py-3 sm:py-4 lg:py-5 
+                       text-base sm:text-lg lg:text-xl text-white font-medium
                        transition-all duration-300
                        bg-transparent
-                       hover:bg-red-600 hover:border-red-600
-                       active:bg-red-800 active:border-red-800"
+                       hover:bg-rose-600 hover:border-rose-600 hover:shadow-rose-500/25
+                       active:bg-rose-700 active:border-rose-700
+                       transform hover:scale-105 active:scale-95"
           >
-            <span className="relative z-10 flex items-center gap-2">
-              <Mail size={20} />
+            <span className="relative z-10 flex items-center gap-2 sm:gap-3">
+              <Mail size={20} className="sm:w-5 sm:h-5 lg:w-6 lg:h-6" />
               Buka Undangan
             </span>
           </button>
